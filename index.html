@@ -113,12 +113,17 @@
         ══════════════════════════════════════════════════ */
         nav {
             position: fixed;
-            top: 0; left: 0; right: 0;
+            top: 0; 
+            left: 0; 
+            right: 0;
             z-index: 1000;
-            background: rgba(12, 26, 46, 0.92);
-            backdrop-filter: blur(12px);
+            
+
+            background: rgba(7, 18, 34, 0.88);
+            backdrop-filter: blur(14px);
             border-bottom: 1px solid rgba(255,255,255,0.06);
-            padding: 14px 0;
+            padding: 18px 0;
+            transition: all 0.3s ease;
         }
 
         nav .container {
@@ -127,22 +132,24 @@
             align-items: center;
         }
 
-        .logo {
+        .logo{
             display:flex;
             align-items:center;
-            gap:10px;
-            font-size:20px;
-            font-weight:800;
-            color:var(--white);
-        }
-        .logo img{
-            height:38px;
-            width:auto;
-            border-radius:8px;
-        }
-        .logo span{
-            color:var(--accent);
-        }
+         }
+
+         .logo img{
+             height:72px;
+             width:auto;
+             object-fit:contain;
+             filter:
+                 drop-shadow(0 4px 12px rgba(0,184,148,0.18))
+                 drop-shadow(0 2px 8px rgba(9,132,227,0.22));
+             transition: all 0.35s ease;
+         }
+
+         .logo img:hover{
+             transform: scale(1.03);
+         }
 
         .nav-links { display: flex; gap: 28px; align-items: center; }
         .nav-links a {
@@ -156,6 +163,29 @@
         /* ══════════════════════════════════════════════════
            HERO
         ══════════════════════════════════════════════════ */
+        .hero-logo{
+            width:320px;
+            max-width:90%;
+            margin-bottom:28px;
+            
+            filter:
+                drop-shadow(0 10px 30px rgba(0,184,148,0.18))
+                drop-shadow(0 6px 20px rgba(9,132,227,0.22));
+
+            animation: floatLogo 5s ease-in-out infinite;
+         }
+
+         @keyframes floatLogo{
+             0%{
+                transform: translateY(0px);
+             }
+             50%{
+                transform: translateY(-8px);
+             }
+             100%{
+                transform: translateY(0px);
+             }
+         }
         .hero {
             background: var(--gradient-hero);
             min-height: 100vh;
@@ -600,8 +630,7 @@
 <nav>
     <div class="container">
         <div class="logo">
-            <img src="logo.png" alt="GreenWing Logo">
-            <span>GreenWing</span>
+            <img src="logo.png" alt="GreenWing Analytics Logo">
             </div>
         <div class="nav-links">
             <a href="#problem">Problem</a>
@@ -624,6 +653,7 @@
     <div class="container">
         <div class="hero-grid">
             <div class="hero-content">
+                <img src="logo.png" alt="GreenWing Logo" class="hero-logo">
                 <h1>
                     Smarter Flights.<br>
                     <span class="highlight">Less Fuel. Less CO₂.</span>
@@ -1136,7 +1166,7 @@ function calculateSavings() {
 window.addEventListener('scroll', function(){
     const nav = document.querySelector('nav');
     if(window.scrollY > 50){
-        nav.style.padding = "8px 0";
+        nav.style.padding = "12px 0";
         nav.style.background = "rgba(12,26,46,0.97)";
     } else {
         nav.style.padding = "14px 0";
