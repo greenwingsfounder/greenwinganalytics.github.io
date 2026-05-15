@@ -128,11 +128,21 @@
         }
 
         .logo {
-            font-size: 20px;
-            font-weight: 800;
-            color: var(--white);
+            display:flex;
+            align-items:center;
+            gap:10px;
+            font-size:20px;
+            font-weight:800;
+            color:var(--white);
         }
-        .logo span { color: var(--accent); }
+        .logo img{
+            height:38px;
+            width:auto;
+            border-radius:8px;
+        }
+        .logo span{
+            color:var(--accent);
+        }
 
         .nav-links { display: flex; gap: 28px; align-items: center; }
         .nav-links a {
@@ -164,6 +174,18 @@
             background: radial-gradient(circle, rgba(9,132,227,0.08) 0%, transparent 70%);
             border-radius: 50%;
         }
+        .hero::after{ 
+            content:"";
+            position:absolute;
+            right:5%;
+            bottom:10%;
+            width:500px;
+            height:500px;
+            background:url('https://cdn-icons-png.flaticon.com/512/2972/2972185.png');
+            background-size:contain;
+            background-repeat:no-repeat;
+            opacity:0.04;
+         }
 
         .hero-grid {
             display: grid;
@@ -209,8 +231,8 @@
         }
         .stat-card:hover {
             border-color: var(--accent);
-            transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(0,184,148,0.12);
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,184,148,0.15);
         }
         .stat-card .number {
             font-size: 32px;
@@ -385,6 +407,11 @@
         }
         .calc-field input:focus, .calc-field select:focus {
             border-color: var(--accent);
+            
+        }
+        .calc-field select option{
+            background: #132743;
+            color: white;
         }
 
         .calc-btn {
@@ -572,7 +599,10 @@
 ══════════════════════════════════════════════════════ -->
 <nav>
     <div class="container">
-        <div class="logo">✈ Green<span>Wing</span></div>
+        <div class="logo">
+            <img src="logo.png" alt="GreenWing Logo">
+            <span>GreenWing</span>
+            </div>
         <div class="nav-links">
             <a href="#problem">Problem</a>
             <a href="#solution">Solution</a>
@@ -1100,6 +1130,19 @@ function calculateSavings() {
         behavior: 'smooth', block: 'center'
     });
 }
+</script>
+    
+<script>
+window.addEventListener('scroll', function(){
+    const nav = document.querySelector('nav');
+    if(window.scrollY > 50){
+        nav.style.padding = "8px 0";
+        nav.style.background = "rgba(12,26,46,0.97)";
+    } else {
+        nav.style.padding = "14px 0";
+        nav.style.background = "rgba(12,26,46,0.92)";
+    }
+});
 </script>
 
 </body>
